@@ -25,6 +25,7 @@ const router = new VueRouter(
               {path:'/users',component:Users},
               {path:'/rights',component:Permission},
               {path:'/roles',component:Role}
+              
          ] 
          },
 
