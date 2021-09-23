@@ -83,13 +83,15 @@ export default {
       });
     },
   },
-  // 引入外部JS
-  mounted() {
+  created() {
     const s = document.createElement("script");
     s.type = "text/JavaScript";
     s.src = "https://api.amogu.cn/public/static/index/js/page.js";
     document.body.appendChild(s);
   },
+  // 引入外部JS
+
+  mounted() {},
 };
 </script>
 
@@ -112,30 +114,30 @@ export default {
   top: 50%;
   transform: translate(-50%, -50%);
 
-.avatar_box {
-  height: 130px;
-  width: 130px;
-  border: 1px solid #eee;
-  border-radius: 50%;
-  padding: 10px;
-  box-shadow: 0 0 10px #ddd;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  img {
-    width: 100%;
-    height: 100%;
+  .avatar_box {
+    height: 130px;
+    width: 130px;
+    border: 1px solid #eee;
     border-radius: 50%;
-    background-color: #eee;
+    padding: 10px;
+    box-shadow: 0 0 10px #ddd;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: #eee;
+    }
   }
 }
-}
 
-.login_font{
-    font-size: 25px;
-    margin-left: 30px;
-    margin-top: 60px;
+.login_font {
+  font-size: 25px;
+  margin-left: 30px;
+  margin-top: 60px;
 }
 .login_form {
   position: absolute;

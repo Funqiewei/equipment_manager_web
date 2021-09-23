@@ -2,8 +2,9 @@
   <el-container class="index-container">
     <el-header>
       <div>
+        <!-- 用~@图不会裂好奇怪 -->
         <img
-          src="../assets/kylogo2.png"
+          src="~@/assets/kylogo2.png"
           @click="click_logo2"
           height="90"
           style="vertical-align: text-bottom"
@@ -11,24 +12,16 @@
         <span></span>
       </div>
       <div>
-        <div @click="click_index">&nbsp&nbsp首页 &nbsp &nbsp</div>
-        <div @click="click_help">&nbsp &nbsp支持与帮助 &nbsp &nbsp</div>
-        <div @click="click_console">&nbsp &nbsp控制台 &nbsp &nbsp</div>
+        <a @click="click_index">首页</a>
+        <a @click="click_help">支持与帮助 </a>
+        <a @click="click_console">控制台</a>
       </div>
     </el-header>
     <el-main>
-      <div class="main_container">
-        <div class="title">开启校园预约新生活</div>
-        <div class="title2">物联网项目开发</div>
-        <div>
-          <img src="../assets/IndexBgpic.png" alt="" width="800" height="500" />
-        </div>
-      </div>
-      <!-- 路由占位 -->
-    </el-main>
-    <el-footer>
-      <div class="footer-container">
-        <div class="footer">
+      <!-- 路由占位符 -->
+      <router-view> </router-view>
+      <div class="sch_motto">—厚德致远·博学敦行 —</div>
+      <div class="footer">
           <div class="footer_left">
             <p>咨询电话:0575-82001777</p>
             <p></p>
@@ -47,9 +40,9 @@
             <p>0575-82978000</p>
           </div>
         </div>
-        <div class="sch_motto">—厚德致远·博学敦行 —</div>
-      </div>
-    </el-footer>
+    </el-main>  
+    </div>
+
   </el-container>
 </template>
 <script>
@@ -78,6 +71,10 @@ export default {
 <style lang="less" scoped>
 .index-container {
   height: 100%;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 .el-header {
   background-color: #ffffff;
@@ -96,37 +93,31 @@ export default {
     }
   }
 }
-
-.title {
-  padding-top: 20px;
-  font-weight: bold;
-  font-size: 2rem;
-}
-.title2 {
-  margin-top: 15px;
-  font-size: 1rem;
-}
-.main_container {
-  width: 100%;
-  margin-right: auto;
-  margin-left: auto;
-  background-color: #000;
-  text-align: center;
-  color: #ffffff;
-}
+// .title {
+//   padding-top: 20px;
+//   font-weight: bold;
+//   font-size: 2rem;
+// }
+// .title2 {
+//   margin-top: 15px;
+//   font-size: 1rem;
+// }
+// .main_container {
+//   width: 100%;
+//   margin-right: auto;
+//   margin-left: auto;
+//   background-color: #000;
+//   text-align: center;
+//   color: #ffffff;
+// }
 .el-main {
-  background-color: #eef2f8;
+  background-color: #ffffff;
   width: 100%;
   padding-left: 0px;
   padding-right: 0px;
   padding-top: 0px;
   padding-bottom: 0px;
-}
-.el-footer {
-  padding-left: 0px;
-  padding-right: 0px;
-  padding-top: 0px;
-  padding-bottom: 0px;
+  line-height: 60px;
 }
 .footer_left {
   text-align: center;
@@ -148,10 +139,11 @@ export default {
 }
 
 .footer {
+  background-color: #fff;
   width: 100%;
   font-size: 14px;
   line-height: 30px;
-  border-bottom: solid #cccc;
+  border-top: solid #cccc;
   display: flex;
 }
 .sch_motto {
@@ -161,5 +153,12 @@ export default {
   line-height: 57px;
   color: #9c9c9c;
   display: block;
+}
+a{
+  margin-left: 25px;
+}
+a:hover {
+  font-weight: bold;
+  border-bottom: 2px solid;
 }
 </style>
