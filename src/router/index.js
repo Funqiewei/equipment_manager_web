@@ -15,7 +15,7 @@ Vue.use(VueRouter)
 const router = new VueRouter(
    {
       routes: [
-         { path: "/", redirect: '/index' },
+         { path: "/", redirect: '/login' },
          {
             path: '/index',
             redirect: '/Body',

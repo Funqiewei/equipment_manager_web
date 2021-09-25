@@ -33,16 +33,18 @@
           ⭐科创小项目Test
         </span>
     </div> 
-      <p id="hitokoto" class="encourage"></p> 
+      <p id="hitokoto" class="encourage">{{ hitokotoText}}</p> 
     </div> 
     
   </div>
 </template>
 
 <script>
+import { onMounted } from "vue";
 export default {
   data() {
     return {
+      hitokotoText: "加载中...",
       // 这是登录表单的数据绑定对象
       loginForm: {
         username: "admin",
@@ -82,6 +84,15 @@ export default {
         this.$router.push("/home");
       });
     },
+    setup() {
+      // mounted
+      fetch("https://v1.hitokoto.cn")
+        .then((response) => response.json())
+        .then((data) => {
+          this.hitokotoText = data.hitokoto;
+        })
+        .catch(console.error);
+    },
   },
   created() {
     const s = document.createElement("script");
@@ -89,9 +100,10 @@ export default {
     s.src = "https://api.amogu.cn/public/static/index/js/page.js";
     document.body.appendChild(s);
   },
-  // 引入外部JS
 
-  mounted() {},
+  mounted() {
+    this.setup();
+  },
 };
 </script>
 
