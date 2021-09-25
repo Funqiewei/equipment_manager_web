@@ -82,7 +82,9 @@ export default {
         console.log(res);
         window.sessionStorage.setItem("token", res.data.token);
         this.$router.push("/home");
-        
+         
+         
+         
       });
     },
     setup() {
