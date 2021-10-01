@@ -17,48 +17,56 @@
         router
         :default-active="$route.path"
       >
-        <!-- 一级菜单   -->
+        <el-menu-item index="welcome">
+          <i class="el-icon-menu"></i>
+          <span slot="title">Welcome</span>
+        </el-menu-item>
+        <el-menu-item index="appointment">
+          <i class="el-icon-position"></i>
+          <span slot="title">开始预约</span>
+        </el-menu-item>
+        <el-menu-item index="users">
+          <i class="el-icon-user-solid"></i>
+          <span slot="title">用户列表</span>
+        </el-menu-item>
+
+        <el-menu-item index="roles">
+          <i class="el-icon-s-operation"></i>
+          <span slot="title">权限列表</span>
+        </el-menu-item>
+        <el-menu-item index="log">
+          <i class="el-icon-loading"></i>
+          <span slot="title">操作日志</span>
+        </el-menu-item>
+        <!--  
+        <!-- 一级菜单   
         <el-submenu
           :index="item.id + ''"
           v-for="item in menulist"
           :key="item.id"
         >
-          <!-- 一级菜单模板 -->
+          <!-- 一级菜单模板 
           <template slot="title">
             <i :class="iconObj[item.id]"></i>
             <span>{{ item.authName }}</span>
           </template>
-          <!--  
-            <el-menu-item-group>
-            <template slot="title">分组一</template>
-            <el-menu-item index="1-1">选项1</el-menu-item>
-            <el-menu-item index="1-2">选项2</el-menu-item>
-            </el-menu-item-group>
-                <el-menu-item-group title="分组2">
-                    <el-menu-item index="1-3">选项3</el-menu-item>
-            </el-menu-item-group>
           
-          <el-submenu index="1-4">
-            <template slot="title">选项4</template>
-            <el-menu-item index="1-4-1">选项1</el-menu-item>
-          </el-submenu>
-          -->
 
-          <!-- 二级菜单 -->
+          <!-- 二级菜单 -
           <el-menu-item
             :index="'/' + subItem.path + ''"
             v-for="subItem in item.children"
             :key="subItem.id"
             @click="saveNavState('/' + subItem.path)"
           >
-            <!-- 二级菜单模板 -->
+            <!-- 二级菜单模板 -
             <template slot="title">
               <i class="el-icon-menu"></i>
               <span>{{ subItem.authName }}</span>
             </template>
           </el-menu-item>
         </el-submenu>
-        
+        -->
       </el-menu>
     </el-aside>
     <el-container>
@@ -75,7 +83,9 @@
         </div>
         <div>
           <el-button icon="el-icon-collection" @click="help">支持</el-button>
-          <el-button icon="el-icon-switch-button" @click="logout">退出</el-button>
+          <el-button icon="el-icon-switch-button" @click="logout"
+            >退出</el-button
+          >
         </div>
       </el-header>
       <!-- 内容主体 -->
@@ -84,7 +94,8 @@
         <router-view> </router-view>
       </el-main>
       <!-- 底部 -->
-      <el-footer>广告位招租</el-footer>
+      <el-footer><img src="../assets/footer.jpeg" alt="" height="100%" width="100%" v-show="random==1">
+      <img src="../assets/footer2.jpg" alt="" height="100%" width="100%" v-show="random==2"></el-footer>
     </el-container>
   </el-container>
 </template>
@@ -103,11 +114,16 @@ export default {
       },
       isCollapse: false,
       activePath: "",
+      
+      random:1,
+      temp:0,
     };
   },
+ 
   created() {
     this.getMenuList();
     this.activePath = window.sessionStorage.getItem("activePath");
+    this.random=Math.round(Math.random()*1)+1 ;
   },
   methods: {
     help() {
@@ -163,14 +179,18 @@ export default {
 }
 .el-footer {
   background-color: #ffffff;
-  margin-left: 1px;
+  margin-left: 0.5px;
+  height: 180px !important;
 }
 .el-main {
   background-color: #eef2f8;
 }
 .el-aside {
   background-color: #1d1d1e;
-  border-right: none;
+ .el-menu {
+    border-right: 0px;
+  }
+  transition: 0.5s;
 }
 .iconfont {
   margin-right: 10px;

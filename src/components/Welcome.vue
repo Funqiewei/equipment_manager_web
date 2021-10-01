@@ -4,15 +4,23 @@
       <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
       <el-breadcrumb-item></el-breadcrumb-item>
     </el-breadcrumb>
-    <h3>Weclome!! Admin，现在是{{ nowDate }}</h3>
-    <div>使用说明：</div>
+    <el-card class="box-card">
+      <h3>Weclome!! Admin，现在是{{ nowDate }}</h3>
+      <div>使用说明：<br>
+        欢迎使用物联网预约系统<br>
+        warning!!!<br>
+        本项目还在探索开发阶段！！！<br>
+        如有Bug<a style="text-decoration:line-through">概不负责</a>报过来修<br>
+        
+      </div>
+    </el-card>
   </div>
 </template>
 <script>
 export default {
   data() {
     return {
-      nowDate: "",
+      nowDate: "loading",
     };
   },
   created() {
@@ -38,4 +46,5 @@ export default {
 
 
 <style lang="less" scoped>
+
 </style>

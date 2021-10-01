@@ -1,11 +1,14 @@
 <template>
   <div class="login_container">
-    <canvas id="startrack"></canvas>
+    
+    <canvas id="startrack">
+    </canvas>
+
+    <p class="out" @click="out">🏃‍♀️退出</p>
     <div class="login_box">
-     
       <!-- 头像区域 -->
       <div class="avatar_box">
-        <img src="../assets/kylogo.png" alt="">
+        <img src="../assets/kylogo.png" alt="" onclick="window.location.href = 'http://www.ky.zstu.edu.cn/'" >
       </div >
        <div class=login_font>
        登录 
@@ -33,10 +36,12 @@
           ⭐科创小项目Test
         </span>
     </div> 
+      
+    
       <p id="hitokoto" class="encourage">{{ hitokotoText}}</p> 
     </div> 
     
-  </div>
+
 </template>
 
 <script>
@@ -44,7 +49,7 @@ import { onMounted } from "vue";
 export default {
   data() {
     return {
-      hitokotoText: "加载中...",
+      hitokotoText: "loading...",
       // 这是登录表单的数据绑定对象
       loginForm: {
         username: "admin",
@@ -66,6 +71,10 @@ export default {
     };
   },
   methods: {
+    out(){
+      this.$router.push("/index");
+
+    },
     // 点击重置按钮，重置登录表单
     resetLoginForm() {
       // console.log(this);
@@ -81,15 +90,12 @@ export default {
         this.$message.success({ message: "登录成功" });
         console.log(res);
         window.sessionStorage.setItem("token", res.data.token);
-        this.$router.push("/home");
-         
-         
-         
+        this.$router.push("/home");      
       });
     },
     setup() {
       // mounted
-      fetch("https://v1.hitokoto.cn")
+        fetch("https://v1.hitokoto.cn/?c=k")
         .then((response) => response.json())
         .then((data) => {
           this.hitokotoText = data.hitokoto;
@@ -119,6 +125,7 @@ export default {
   height: 100%;
   width: 100%;
 }
+
 .login_box {
   width: 450px;
   height: 300px;
@@ -191,6 +198,19 @@ export default {
   transform: translate(-45%, 0);
   font-size: 15px;
   letter-spacing: 0.5em;
+  opacity: 0.9;
+  font-weight: 600;
+}
+.out {
+  height: 25px;
+  width: 80px;
+  background-color: #000;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  color: #fff;
+  transform: translate(0%, -45%);
+  font-size: 20px;
   opacity: 0.9;
   font-weight: 600;
 }

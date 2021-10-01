@@ -16,9 +16,26 @@
           我们鼓励你反馈任何问题或者建议，正是这些反馈推动我们不断进步。任何问题，请与我们联系。
         </p>
         <h3>更多帮助</h3>
-        <li>CHZ</li>
-        <li>QSH</li>
-        <li>FCW</li>
+        <div>
+          <div class="show">
+            <li>陈豪佐：硬件</li>
+            <img src="~@/assets/github.png" alt="github" width="50" height="50" />
+            <img src="~@/assets/csdn.png" alt="csdn" width="50" height="50" />
+            <img src="~@/assets/gitee.png" alt="gitee" width="50" height="50" />
+          </div>
+          <div class="show">
+            <li>邱仕洪：后端</li>
+           <img src="~@/assets/github.png" alt="github" width="50" height="50" />
+            <img src="~@/assets/csdn.png" alt="csdn" width="50" height="50" />
+            <img src="~@/assets/gitee.png" alt="gitee" width="50" height="50" />
+          </div>
+          <div class="show">
+            <li>方超伟：前端</li>
+            <img src="~@/assets/github.png" alt="github" width="50" height="50" />
+            <img src="~@/assets/csdn.png" alt="csdn" width="50" height="50" />
+            <img src="~@/assets/gitee.png" alt="gitee" width="50" height="50" />
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -78,16 +95,16 @@ export default {
 }
 .help_main {
   max-width: 1040px;
-  padding-left:60px;
+  padding-left: 60px;
   padding-right: 20px;
-  >h3{
+  > h3 {
     font-size: 18px;
     font-weight: 500;
     line-height: 19.8px;
     color: #333333;
     margin: 20px 0 10px 0;
   }
-  >p{
+  > p {
     font-size: 14px;
   }
   > li {
@@ -95,6 +112,13 @@ export default {
     padding-left: 40px;
     list-style-type: disc;
     list-style-position: outside;
+  }
+  > h3 {
+    font-size: 23px;
+    font-weight: 500;
+    line-height: 19.8px;
+    color: #333333;
+    margin: 20px 0 10px 0;
   }
 }
 .colorful {
@@ -106,6 +130,18 @@ export default {
   margin-right: auto;
   margin-left: auto;
 }
+.show {
+  display: flex;
+  margin-top: 20px;
+  vertical-align: middle;
+  align-items: center;
+  > img {
+    margin-left: 20px;
+  }
+  > li {
+    margin-left: 20px;
+  }
+}
 .help_body {
   font-size: 18px;
   font-weight: 500;
@@ -114,12 +150,5 @@ export default {
   margin: 20px 0 10px 0;
   padding-left: 20px;
   padding-right: 20px;
-  > h3 {
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 19.8px;
-    color: #333333;
-    margin: 20px 0 10px 0;
-  }
 }
 </style>

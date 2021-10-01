@@ -9,7 +9,7 @@
           height="90"
           style="vertical-align: text-bottom"
         />
-        <span></span>
+        
       </div>
       <div>
         <a @click="click_index">首页</a>
@@ -20,13 +20,12 @@
     <el-main>
       <!-- 路由占位符 -->
       <router-view> </router-view>
-      <div class="sch_motto">—厚德致远·博学敦行 —</div>
       <div class="footer">
           <div class="footer_left">
             <p>咨询电话:0575-82001777</p>
             <p></p>
             <p>院长书记信箱:</p>
-            <p>ky@zstu.edu.cn Copyright(c)2021</p>
+            <p>ky@zstu.edu.cn </p>
           </div>
           <div class="footer_center">
             <p>浙江理工大学科技与艺术学院</p>
@@ -36,10 +35,13 @@
           <div class="footer_right">
             <p>邮编:312369</p>
             <p></p>
-            <p>传真:</p>
-            <p>0575-82978000</p>
+            <p>传真:0575-82978000</p>
+            <p> Copyright(c)2021
+            </p>
+            
           </div>
         </div>
+        <div class="sch_motto">—厚德致远·博学敦行 —</div>
     </el-main>  
     </div>
 

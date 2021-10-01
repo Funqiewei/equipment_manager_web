@@ -3,19 +3,20 @@ import VueRouter from 'vue-router'
 import Login from '@/components/Login.vue'
 import Index from '@/components/Index/Index.vue'
 import Home from '@/components/Home.vue'
-import Help from '@/components/Index/Help.vue'
+import Log from '@/components/Log.vue'
+import Appointment from '@/components/Appointment.vue'
 import Welecome from '@/components/Welcome.vue'
 import Users from '@/components/user/Users.vue'
+import Help from '@/components/Index/Help.vue'
 import Permission from '@/components/rights/Permission.vue'
 import Role from '@/components/rights/Role.vue'
 import Body from '@/components/Index/Body.vue'
-
 Vue.use(VueRouter)
 
 const router = new VueRouter(
    {
       routes: [
-         { path: "/", redirect: '/login' },
+         { path: "/", redirect: '/index' },
          {
             path: '/index',
             redirect: '/Body',
@@ -35,8 +36,9 @@ const router = new VueRouter(
                { path: '/welcome', component: Welecome },
                { path: '/users', component: Users },
                { path: '/rights', component: Permission },
-               { path: '/roles', component: Role }
-
+               { path: '/roles', component: Role },
+               { path: '/log', component: Log },
+               { path: '/appointment', component: Appointment },
             ]
          },
 
