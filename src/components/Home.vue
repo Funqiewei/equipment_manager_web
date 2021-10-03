@@ -94,8 +94,8 @@
         <router-view> </router-view>
       </el-main>
       <!-- 底部 -->
-      <el-footer><img src="../assets/footer.jpeg" alt=""  height="180px" width="820px" v-show="random==1">
-      <img src="../assets/footer2.jpg" alt="" height="180px" width="820px" v-show="random==2"></el-footer>
+      <el-footer><img src="../assets/footer.jpeg" alt=""  height="160px" width="820px" v-show="random==1">
+      <img src="../assets/footer2.jpg" alt="" height="160px" width="820px" v-show="random==2"></el-footer>
     </el-container>
   </el-container>
 </template>
@@ -180,7 +180,7 @@ export default {
 .el-footer {
   background-color: #ffffff;
   margin-left: 0.5px;
-  height: 180px !important;
+  height: 160px !important;
   >img{
     margin-left: 150px;
   }

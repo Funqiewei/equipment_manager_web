@@ -104,10 +104,10 @@ export default {
     },
   },
   created() {
-    const s = document.createElement("script");
-    s.type = "text/JavaScript";
-    s.src = "https://api.amogu.cn/public/static/index/js/page.js";
-    document.body.appendChild(s);
+    // const s = document.createElement("script");
+    // s.type = "text/JavaScript";
+    // s.src = "https://api.amogu.cn/public/static/index/js/page.js";
+    // document.body.appendChild(s);
   },
 
   mounted() {

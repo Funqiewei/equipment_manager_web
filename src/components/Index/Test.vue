@@ -19,16 +19,22 @@ import axios from 'axios'
 export default {
 methods:{
     testevent(){
-        axios.get('api/blueberrypai/getBlueBerryJamInfo.php')
-        .then(_d=>{
-            console.log(_d);
-        })
+        fetch("http://iwenwiki.com/api/blueberrypai/getBlueBerryJamInfo.php")
+        .then(response => response.json() )
+        .then(data => console.log(data))
     },
-    testevent2(){
-        axios.get('api/FingerUnion/data.json')
-         .then(_d=>{
-            console.log(_d);
-        })
+        async testevent2(){
+        fetch("http://ztuser.ltd/equipment_server/device1/link?uuid=1&password=0")
+        .then((response) => response.json())
+        .then((data) => {console.log(data.time)})
+        .catch(console.error);
+        //  const { data: res } = await this.$http.post("http://ztuser.ltd/equipment_server/device1/link?uuid=1&password=0")
+        //  if (res.meta.status !== 200) return this.$message.error(res.meta.data);
+        //     console.log(res);
+        // // axios.get('api/FingerUnion/data.json')
+        //  .then(_d=>{
+        //     console.log(_d);
+        // })
     }
 }
 }

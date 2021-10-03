@@ -13,7 +13,11 @@ import Permission from '@/components/rights/Permission.vue'
 import Role from '@/components/rights/Role.vue'
 import Body from '@/components/Index/Body.vue'
 Vue.use(VueRouter)
-
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(location, onResolve, onReject) {
+    if (onResolve || onReject) return originalPush.call(this, location, onResolve, onReject)
+    return originalPush.call(this, location).catch(err => err)
+}
 const router = new VueRouter(
    {
       routes: [
@@ -48,7 +52,6 @@ const router = new VueRouter(
    }
 )
 router.beforeEach((to, from, next) => {
-
    if (to.path === '/index') return next()
    if (to.path === '/help') return next()
    if (to.path === '/login') return next()
