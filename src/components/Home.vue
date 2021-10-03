@@ -1,7 +1,7 @@
 <template>
   <el-container class="home-container">
     <!-- 侧边栏 -->
-    <el-aside :width="isCollapse ? '64px' : '200px'">
+    <el-aside :width="isCollapse ? '64px' : '150px'">
       <!-- 收缩按钮 -->
       <div class="toggle-button" @click="toggleCollapse">&lt;&gt;</div>
       <!-- 侧边栏菜单区域 -->
@@ -94,8 +94,8 @@
         <router-view> </router-view>
       </el-main>
       <!-- 底部 -->
-      <el-footer><img src="../assets/footer.jpeg" alt="" height="100%" width="100%" v-show="random==1">
-      <img src="../assets/footer2.jpg" alt="" height="100%" width="100%" v-show="random==2"></el-footer>
+      <el-footer><img src="../assets/footer.jpeg" alt=""  height="180px" width="820px" v-show="random==1">
+      <img src="../assets/footer2.jpg" alt="" height="180px" width="820px" v-show="random==2"></el-footer>
     </el-container>
   </el-container>
 </template>
@@ -134,7 +134,7 @@ export default {
       this.$router.push("/login");
     },
     async getMenuList() {
-      const { data: res } = await this.$http.get("menus");
+      const { data: res } = await this.$http.get("http://47.96.116.218:8889/api/private/v1/menus");
       if (res.meta.status !== 200) return this.$message.error(res.meta.data);
       this.menulist = res.data;
       console.log(res);
@@ -181,6 +181,9 @@ export default {
   background-color: #ffffff;
   margin-left: 0.5px;
   height: 180px !important;
+  >img{
+    margin-left: 150px;
+  }
 }
 .el-main {
   background-color: #eef2f8;

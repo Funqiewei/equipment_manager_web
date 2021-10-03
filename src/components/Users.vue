@@ -257,7 +257,7 @@ export default {
   },
   methods: {
     async getUserList() {
-      const { data: res } = await this.$http.get("users", {
+      const { data: res } = await this.$http.get("http://47.96.116.218:8889/api/private/v1/users", {
         params: this.queryInfo,
       });
       if (res.meta.status != 200) {
@@ -284,7 +284,7 @@ export default {
       console.log(userinfo);
       // 不用单引号用反引号修改为模板字符串 用反引号（`）标识。它可以当作普通字符串使用，也可以用来定义多行字符串，或者在字符串中嵌入变量。
       const { data: res } = await this.$http.put(
-        `users/${userinfo.id}/state/${userinfo.mg_state}`
+        `http://47.96.116.218:8889/api/private/v1/users/${userinfo.id}/state/${userinfo.mg_state}`
       );
       if (res.meta.status !== 200) {
         userinfo.mg_state = !userinfo.mg_state;
@@ -313,7 +313,7 @@ export default {
       this.$refs.addFormRef.validate(async (value) => {
         if (!value) return;
         // 发送网络请求
-        const { data: res } = await this.$http.post("users", this.addForm);
+        const { data: res } = await this.$http.post("http://47.96.116.218:8889/api/private/v1/users", this.addForm);
         if (res.meta.status !== 201) {
           return this.$message.error("用户添加失败！");
         }
@@ -327,7 +327,7 @@ export default {
     // 展示编辑用户的对话框
     async showEditDialog(id) {
       this.editDialogVisible = true;
-      const { data: res } = await this.$http.get(`users/${id}`);
+      const { data: res } = await this.$http.get(`http://47.96.116.218:8889/api/private/v1/users/${id}`);
       if (res.meta.status !== 200) return this.$message.error("修改出错了！");
       this.editForm = res.data;
     },
@@ -337,7 +337,7 @@ export default {
     editUser() {
       this.$refs.editFormRef.validate(async (vaild) => {
         const { data: res } = await this.$http.put(
-          `users/${this.editForm.id}`,
+          `http://47.96.116.218:8889/api/private/v1/users/${this.editForm.id}`,
           {
             email: this.editForm.email,
             mobile: this.editForm.mobile,
@@ -367,7 +367,7 @@ export default {
         }
       )
         .then(async () => {
-          const { data: res } = await this.$http.delete(`users/${id}`)
+          const { data: res } = await this.$http.delete(`http://47.96.116.218:8889/api/private/v1/users/${id}`)
           // 防止误删管理员
           if (id === 500) { return this.$message.error('这是管理员啊！你想删了干甚么？！') }
           if (res.meta.status !== 200) return this.$message.error('删除失败！')

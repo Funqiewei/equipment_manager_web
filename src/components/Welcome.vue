@@ -10,7 +10,7 @@
         欢迎使用物联网预约系统<br>
         warning!!!<br>
         本项目还在探索开发阶段！！！<br>
-        如有Bug<a style="text-decoration:line-through">概不负责</a>报过来修<br>
+        <a style="text-decoration:line-through">如有Bug概不负责</a>球球了过来修<br>
         
       </div>
     </el-card>

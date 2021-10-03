@@ -5,6 +5,9 @@
       <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
       <el-breadcrumb-item :to="{ path: '/log' }">操作日志</el-breadcrumb-item>
     </el-breadcrumb>
+    <el-card>
+      图表区
+    </el-card>
     <el-card> 
       <el-table :data="rightslist" style="width: 100%" border stripe>
         <el-table-column label="⭐" type="index"> </el-table-column>
@@ -22,7 +25,13 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+ data() {
+    return {
+     rightslist: [],
+    };
+  },
+};
 </script>
 
 

@@ -10,7 +10,7 @@ import './assets/fonts/iconfont.css'
 import './assets/css/global.css'
 import axios from 'axios'
 //配置请求根路径
-axios.defaults.baseURL = 'http://47.96.116.218:8889/api/private/v1/'
+// axios.defaults.baseURL = ''
 axios.interceptors.request.use(config=>{
   //console.log(config)
   config.headers.Authorization=window.sessionStorage.getItem('token')

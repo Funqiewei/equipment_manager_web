@@ -2,11 +2,12 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '@/components/Login.vue'
 import Index from '@/components/Index/Index.vue'
+import Test from '@/components/Index/Test.vue'
 import Home from '@/components/Home.vue'
 import Log from '@/components/Log.vue'
 import Appointment from '@/components/Appointment.vue'
 import Welecome from '@/components/Welcome.vue'
-import Users from '@/components/user/Users.vue'
+import Users from '@/components/Users.vue'
 import Help from '@/components/Index/Help.vue'
 import Permission from '@/components/rights/Permission.vue'
 import Role from '@/components/rights/Role.vue'
@@ -24,6 +25,7 @@ const router = new VueRouter(
             children: [
                { path: '/help', component: Help },
                { path: '/Body', component: Body },
+               { path: '/Test', component: Test },
             ]
 
          },

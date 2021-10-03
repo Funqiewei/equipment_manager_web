@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     async getRightslist() {
-      const { data: res } = await this.$http.get("rights/list");
+      const { data: res } = await this.$http.get("http://47.96.116.218:8889/api/private/v1/rights/list");
       if (res.meta.status !== 200) {
         return console.log("获取权限列表失败");
       }

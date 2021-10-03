@@ -83,7 +83,7 @@ export default {
     login() {
       this.$refs.loginFormRef.validate(async (valid) => {
         if (!valid) return;
-        const { data: res } = await this.$http.post("login", this.loginForm);
+        const { data: res } = await this.$http.post("http://47.96.116.218:8889/api/private/v1/login", this.loginForm);
 
         if (res.meta.status !== 200)
           return this.$message.error({ message: "账号或密码错误" });
@@ -207,11 +207,15 @@ export default {
   background-color: #000;
   position: absolute;
   top: 0px;
-  right: 0px;
+  right: 8px;
   color: #fff;
-  transform: translate(0%, -45%);
+  transform: translate(10%, -40%);
   font-size: 20px;
   opacity: 0.9;
   font-weight: 600;
+}
+p:hover {
+  font-weight: bold;
+  border-bottom: 3px solid;
 }
 </style>

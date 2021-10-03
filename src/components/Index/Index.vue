@@ -12,9 +12,11 @@
         
       </div>
       <div>
+        <a @click="click_test">test</a>
         <a @click="click_index">首页</a>
         <a @click="click_help">支持与帮助 </a>
         <a @click="click_console">控制台</a>
+        
       </div>
     </el-header>
     <el-main>
@@ -64,6 +66,9 @@ export default {
     },
     click_console() {
       this.$router.push("/home");
+    },
+    click_test() {
+      this.$router.push("/test");
     },
   },
 };
