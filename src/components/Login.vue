@@ -16,8 +16,8 @@
       <!-- 登录表单区域 -->
       <el-form ref="loginFormRef" :model="loginForm" :rules="loginFormRules" label-width="0px" class="login_form">
         <!-- 用户名 -->
-        <el-form-item prop="username">
-          <el-input v-model="loginForm.username" prefix-icon="el-icon-user"></el-input>
+        <el-form-item prop="account">
+          <el-input v-model="loginForm.account" prefix-icon="el-icon-user"></el-input>
         </el-form-item>
         <!-- 密码 -->
         <el-form-item prop="password">
@@ -45,20 +45,22 @@
 </template>
 
 <script>
+import axios from "axios";
 import { onMounted } from "vue";
+import qs from 'qs'
 export default {
   data() {
     return {
       hitokotoText: "loading...",
       // 这是登录表单的数据绑定对象
       loginForm: {
-        username: "admin",
+        account: "test1",
         password: "123456",
       },
       // 这是表单的验证规则对象
       loginFormRules: {
         // 验证用户名是否合法
-        username: [
+        account: [
           { required: true, message: "请输入登录名称", trigger: "blur" },
           { min: 3, max: 10, message: "长度在3到10个字符", trigger: "blur" },
         ],
@@ -71,8 +73,17 @@ export default {
     };
   },
   methods: {
+    testevent3(){
+        
+    },
     out(){
-      this.$router.push("/index");
+      this.$http.post('/api/user/exitLogin')
+        .then(function (response) {
+          console.log(response);
+          let allCookies = document.cookie
+          console.log(allCookies)
+        })
+       this.$router.push("/index");
 
     },
     // 点击重置按钮，重置登录表单
@@ -81,17 +92,32 @@ export default {
       this.$refs.loginFormRef.resetFields();
     },
     login() {
-      this.$refs.loginFormRef.validate(async (valid) => {
-        if (!valid) return;
-        const { data: res } = await this.$http.post("http://47.96.116.218:8889/api/private/v1/login", this.loginForm);
-
-        if (res.meta.status !== 200)
-          return this.$message.error({ message: "账号或密码错误" });
-        this.$message.success({ message: "登录成功" });
-        console.log(res);
-        window.sessionStorage.setItem("token", res.data.token);
-        this.$router.push("/home");      
-      });
+        this.$http.post('/api/user/login', qs.stringify(this.loginForm))
+        .then( (response)=> {
+          console.log(response);
+          this.$router.push("/home")
+          // let allCookies = document.cookie
+          //  console.log(allCookies);
+          
+          // this.$refs.loginFormRef.validate(async (valid) => {
+          //     if (!valid) return;
+          //     const { data: res } = await this.$http.post("http://47.96.116.218:8889/api/private/v1/login", this.loginForm);
+          //     if (res.meta.status !== 200)
+          //       return this.$message.error({ message: "账号或密码错误" });
+          //     this.$message.success({ message: "登录成功" });
+          //     console.log(res);
+          //     window.sessionStorage.setItem("token", res.data.token);    
+                 
+              
+          //   });
+        })
+        .catch(function (error) {console.log(error)});
+         
+        // {headers:{'Content-Type':'application/x-www-form-urlencoded'}}
+        // this.$refs.loginFormRef.validate(async (valid) => {
+        //   if (!valid) return;
+        //   
+        // });
     },
     setup() {
       // mounted
@@ -104,10 +130,10 @@ export default {
     },
   },
   created() {
-    // const s = document.createElement("script");
-    // s.type = "text/JavaScript";
-    // s.src = "https://api.amogu.cn/public/static/index/js/page.js";
-    // document.body.appendChild(s);
+    const s = document.createElement("script");
+    s.type = "text/JavaScript";
+    s.src = "https://api.amogu.cn/public/static/index/js/page.js";
+    document.body.appendChild(s);
   },
 
   mounted() {

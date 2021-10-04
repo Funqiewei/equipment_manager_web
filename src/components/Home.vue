@@ -6,7 +6,7 @@
       <div class="toggle-button" @click="toggleCollapse">&lt;&gt;</div>
       <!-- 侧边栏菜单区域 -->
       <el-menu
-        default-active="2"
+        default-active="welcome"
         class="el-menu-vertical-demo"
         background-color="#1d1d1e"
         text-color="#fff"
@@ -15,7 +15,7 @@
         :collapse="isCollapse"
         :collapse-transition="false"
         router
-        :default-active="$route.path"
+       
       >
         <el-menu-item index="welcome">
           <i class="el-icon-menu"></i>
@@ -114,7 +114,6 @@ export default {
       },
       isCollapse: false,
       activePath: "",
-      
       random:1,
       temp:0,
     };
@@ -134,10 +133,10 @@ export default {
       this.$router.push("/login");
     },
     async getMenuList() {
-      const { data: res } = await this.$http.get("http://47.96.116.218:8889/api/private/v1/menus");
-      if (res.meta.status !== 200) return this.$message.error(res.meta.data);
-      this.menulist = res.data;
-      console.log(res);
+      // const { data: res } = await this.$http.get("/bpi/menus");
+      // if (res.meta.status !== 200) return this.$message.error(res.meta.data);
+      // this.menulist = res.data;
+      // console.log(res);
     },
     pic_click() {
       this.$router.push("/welcome");
@@ -146,11 +145,7 @@ export default {
     toggleCollapse() {
       this.isCollapse = !this.isCollapse;
     },
-    // 高亮保持
-    saveNavState(activePath) {
-      window.sessionStorage.setItem("activePath", activePath);
-      this.activePath = activePath;
-    },
+
   },
 };
 </script>

@@ -13,6 +13,7 @@
       </div>
       <div>
         <a @click="click_test">test</a>
+        <a @click="click_doc">开发文档</a>
         <a @click="click_index">首页</a>
         <a @click="click_help">支持与帮助 </a>
         <a @click="click_console">控制台</a>
@@ -22,7 +23,7 @@
     <el-main>
       <!-- 路由占位符 -->
       <router-view> </router-view>
-      <div class="footer">
+      <!-- <div class="footer">
           <div class="footer_left">
             <p>咨询电话:0575-82001777</p>
             <p></p>
@@ -42,7 +43,7 @@
             </p>
             
           </div>
-        </div>
+        </div> -->
         <div class="sch_motto">—厚德致远·博学敦行 —</div>
     </el-main>  
     </div>
@@ -58,6 +59,9 @@ export default {
     click_logo2() {
       window.location.href = "http://www.ky.zstu.edu.cn/";
     },
+    click_doc() {
+      this.$router.push("/document");
+    },
     click_index() {
       this.$router.push("/Index");
     },
@@ -65,7 +69,7 @@ export default {
       this.$router.push("/Help");
     },
     click_console() {
-      this.$router.push("/home");
+      this.$router.push("/login");
     },
     click_test() {
       this.$router.push("/test");
@@ -155,6 +159,7 @@ export default {
 }
 .sch_motto {
   text-align: center;
+  border-top: solid #cccc;
   font-size: 16px;
   font-weight: 900;
   line-height: 57px;

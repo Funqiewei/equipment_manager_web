@@ -20,6 +20,7 @@
         >
         </el-time-select>
         <el-button type="primary" @click="clickapp">预约</el-button>
+        <el-button type="primary" @click="clickapp1">预约111</el-button>
     <!-- 添加用户对话框 -->
     <el-dialog
       title="预约表单"
@@ -37,10 +38,13 @@
         <!-- <el-form-item label="用户名" prop="username">
           <el-input v-model="appForm.username" disabled></el-input>
         </el-form-item> -->
-        <el-form-item label="序列号" prop="machine">
+        <el-form-item label="设备号" prop="machine">
           <el-input v-model="appForm.machine" disabled></el-input>
         </el-form-item>
-        <el-form-item label="预约时间" prop="time">
+        <el-form-item label="目前状态" prop="machine">
+          <el-input v-model="appForm.machine" disabled></el-input>
+        </el-form-item>
+        <el-form-item label="预约人" prop="time">
           <el-input v-model="appForm.time" disabled></el-input>
         </el-form-item>
 
@@ -66,7 +70,7 @@
       </div>
     </el-card>
     <el-card>
-      <p>我的预约列表</p>
+      <p>设备列表</p>
       <el-table :data="rightslist" style="width: 100%" border stripe>
         <el-table-column label="⭐" type="index"> </el-table-column>
         <el-table-column prop="authName" label="预约信息"> </el-table-column>
@@ -84,6 +88,7 @@
   </div>
 </template>
 <script>
+import qs from 'qs'
 export default {
   data() {
     return {
@@ -95,11 +100,41 @@ export default {
         current: "",
         machine:"初号机",
       },
+      appForm1: {
+        account:"test1",
+        password:"123456",
+        device1:"1",
+        finish:"",
+        start:""
+      },
+      
       appdialogVisible: false,
     };
   },
+  created() {
+    setInterval(() => {
+      this.current();
+    }, 1000);
+  },
   methods: {
+    current() {
+      var timestamp=new Date().getTime();
+      this.appForm1.start=timestamp+1000;
+      this.appForm1.finish=timestamp+3600000;
+      // console.log(this.appForm1.start);
+      // console.log(this.appForm1.finish);
+    },
+    clickapp1(){
+    this.$http.post('/api/user/useDevice1', qs.stringify(this.appForm1))
+    .then( (response)=> {
+          console.log(response);
+          // let allCookies = document.cookie
+          //  console.log(allCookies);
+        })
+        .catch(function (error) {console.log(error)});
+    },
     clickapp(){
+      
       if(this.appForm.time){
         this.appdialogVisible=true;
       }else{

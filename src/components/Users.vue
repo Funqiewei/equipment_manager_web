@@ -257,129 +257,131 @@ export default {
   },
   methods: {
     async getUserList() {
-      const { data: res } = await this.$http.get("http://47.96.116.218:8889/api/private/v1/users", {
-        params: this.queryInfo,
-      });
-      if (res.meta.status != 200) {
-        return this.$message.error("获取用户列表失败");
-      }
-      this.userlist = res.data.users;
-      this.total = res.data.total;
-      console.log(res);
+      // const { data: res } = await this.$http.get("/bpi/users", {
+      //   params: this.queryInfo,
+        
+      // });
+      // console.log(res);
+      // if (res.meta.status != 200) {
+      //   return this.$message.error("获取用户列表失败");
+      // }
+      // this.userlist = res.data.users;
+      // this.total = res.data.total;
+      // console.log(res);
     },
 
     getUserInfo() {
-      this.queryInfo.pagenum = 1;
-      this.getUserList();
+      // this.queryInfo.pagenum = 1;
+      // this.getUserList();
     },
     handleSizeChange(newSize) {
-      this.queryInfo.pagesize = newSize;
-      this.getUserList();
+      // this.queryInfo.pagesize = newSize;
+      // this.getUserList();
     },
     handleCurrentChange(newPage) {
-      this.queryInfo.pagenum = newPage;
-      this.getUserList();
+      // this.queryInfo.pagenum = newPage;
+      // this.getUserList();
     },
     async userStateChange(userinfo) {
-      console.log(userinfo);
-      // 不用单引号用反引号修改为模板字符串 用反引号（`）标识。它可以当作普通字符串使用，也可以用来定义多行字符串，或者在字符串中嵌入变量。
-      const { data: res } = await this.$http.put(
-        `http://47.96.116.218:8889/api/private/v1/users/${userinfo.id}/state/${userinfo.mg_state}`
-      );
-      if (res.meta.status !== 200) {
-        userinfo.mg_state = !userinfo.mg_state;
-        return this.$message.error("更新失败");
-      }
+      // console.log(userinfo);
+      // // 不用单引号用反引号修改为模板字符串 用反引号（`）标识。它可以当作普通字符串使用，也可以用来定义多行字符串，或者在字符串中嵌入变量。
+      // const { data: res } = await this.$http.put(
+      //   `/bpi/users/${userinfo.id}/state/${userinfo.mg_state}`
+      // );
+      // if (res.meta.status !== 200) {
+      //   userinfo.mg_state = !userinfo.mg_state;
+      //   return this.$message.error("更新失败");
+      // }
 
-      this.$message.success("更新成功");
+      // this.$message.success("更新成功");
     },
 
     // 重置对话框
     addDialogClosed() {
-      this.$refs.addFormRef.resetFields();
+      // this.$refs.addFormRef.resetFields();
     },
     editDialogClosed() {
-      this.$refs.addFormRef.resetFields();
+      // this.$refs.addFormRef.resetFields();
     },
     handleClose(done) {
-      this.$confirm("确认关闭？")
-        .then((_) => {
-          done();
-        })
-        .catch((_) => {});
+      // this.$confirm("确认关闭？")
+      //   .then((_) => {
+      //     done();
+      //   })
+      //   .catch((_) => {});
     },
     addUser() {
-      // 预校验
-      this.$refs.addFormRef.validate(async (value) => {
-        if (!value) return;
-        // 发送网络请求
-        const { data: res } = await this.$http.post("http://47.96.116.218:8889/api/private/v1/users", this.addForm);
-        if (res.meta.status !== 201) {
-          return this.$message.error("用户添加失败！");
-        }
-        this.$message.success("用户添加成功!");
-        // 添加后关闭对话框
-        this.dialogVisible = false;
-        // 添加完之后再刷新一次用户列表
-        this.getUserList();
-      });
+      // // 预校验
+      // this.$refs.addFormRef.validate(async (value) => {
+      //   if (!value) return;
+      //   // 发送网络请求
+      //   const { data: res } = await this.$http.post("/bpi/users", this.addForm);
+      //   if (res.meta.status !== 201) {
+      //     return this.$message.error("用户添加失败！");
+      //   }
+      //   this.$message.success("用户添加成功!");
+      //   // 添加后关闭对话框
+      //   this.dialogVisible = false;
+      //   // 添加完之后再刷新一次用户列表
+      //   this.getUserList();
+      // });
     },
     // 展示编辑用户的对话框
     async showEditDialog(id) {
-      this.editDialogVisible = true;
-      const { data: res } = await this.$http.get(`http://47.96.116.218:8889/api/private/v1/users/${id}`);
-      if (res.meta.status !== 200) return this.$message.error("修改出错了！");
-      this.editForm = res.data;
+      // this.editDialogVisible = true;
+      // const { data: res } = await this.$http.get(`/bpi/users/${id}`);
+      // if (res.meta.status !== 200) return this.$message.error("修改出错了！");
+      // this.editForm = res.data;
     },
     editDialogClosed() {
-      this.$refs.editFormRef.resetFields();
+      // this.$refs.editFormRef.resetFields();
     },
     editUser() {
-      this.$refs.editFormRef.validate(async (vaild) => {
-        const { data: res } = await this.$http.put(
-          `http://47.96.116.218:8889/api/private/v1/users/${this.editForm.id}`,
-          {
-            email: this.editForm.email,
-            mobile: this.editForm.mobile,
-          }
-        );
-        if (res.meta.status !== 200) {
-          return this.$message.error("修改用户信息失败!!!");
-        }
-        // 关闭对话框
-        this.editDialogVisible = false;
-        // 刷新用户信息
-        this.getUserList();
-        // 提示修改成功
-        this.$message.success("修改用户信息成功~");
-      });
+      // this.$refs.editFormRef.validate(async (vaild) => {
+      //   const { data: res } = await this.$http.put(
+      //     `/bpi/users/${this.editForm.id}`,
+      //     {
+      //       email: this.editForm.email,
+      //       mobile: this.editForm.mobile,
+      //     }
+      //   );
+      //   if (res.meta.status !== 200) {
+      //     return this.$message.error("修改用户信息失败!!!");
+      //   }
+      //   // 关闭对话框
+      //   this.editDialogVisible = false;
+      //   // 刷新用户信息
+      //   this.getUserList();
+      //   // 提示修改成功
+      //   this.$message.success("修改用户信息成功~");
+      // });
     },
       // 删除用户
     async removeUser(id) {
-      // 弹框询问
-      const confirmRes = await this.$confirm(
-        '此操作将永久删除该用户, 是否继续?',
-        '提示',
-        {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }
-      )
-        .then(async () => {
-          const { data: res } = await this.$http.delete(`http://47.96.116.218:8889/api/private/v1/users/${id}`)
-          // 防止误删管理员
-          if (id === 500) { return this.$message.error('这是管理员啊！你想删了干甚么？！') }
-          if (res.meta.status !== 200) return this.$message.error('删除失败！')
-          this.$message.success('删除成功~')
-          this.getUserList()
-        })
-        .catch(() => {
-          this.$message({
-            type: 'info',
-            message: '已取消删除'
-          })
-        })
+      // // 弹框询问
+      // const confirmRes = await this.$confirm(
+      //   '此操作将永久删除该用户, 是否继续?',
+      //   '提示',
+      //   {
+      //     confirmButtonText: '确定',
+      //     cancelButtonText: '取消',
+      //     type: 'warning'
+      //   }
+      // )
+      //   .then(async () => {
+      //     const { data: res } = await this.$http.delete(`/users/${id}`)
+      //     // 防止误删管理员
+      //     if (id === 500) { return this.$message.error('这是管理员啊！你想删了干甚么？！') }
+      //     if (res.meta.status !== 200) return this.$message.error('删除失败！')
+      //     this.$message.success('删除成功~')
+      //     this.getUserList()
+      //   })
+      //   .catch(() => {
+      //     this.$message({
+      //       type: 'info',
+      //       message: '已取消删除'
+      //     })
+      //   })
     },
   },
 };
