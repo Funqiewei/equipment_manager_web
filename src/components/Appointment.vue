@@ -142,6 +142,7 @@ export default {
       }
     },
     appDialogClosed() {
+      
       this.$refs.appFormRef.resetFields();
     },
     handleClose(done) {
