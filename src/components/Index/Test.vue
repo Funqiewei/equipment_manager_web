@@ -17,7 +17,17 @@
 
 <script>
 import axios from 'axios'
+import qs from 'qs'
 export default {
+ data() {
+    return {
+      // 这是登录表单的数据绑定对象
+      loginForm: {
+        account: "test1",
+        password: "123456",
+      },
+    };
+  },   
 methods:{
     testevent(){
         fetch("http://iwenwiki.com/api/blueberrypai/getBlueBerryJamInfo.php")
@@ -30,14 +40,9 @@ methods:{
         // .then((response) => response.json())
         // .then((data) => {console.log(data.time)})
         // .catch(console.error);
-         const { data: res } = await this.$http.post("http://ztuser.ltd/equipment_server/device1/link?uuid=1&password=0")
-         if (res.meta.status !== 200) return this.$message.error(res.meta.data);
-            console.log(res);
-         axios.get('api/FingerUnion/data.json')
-         .then(_d=>{
-            console.log(_d);
-        })
-    }
+            this.$http.post('/api/user/login', qs.stringify(this.loginForm))
+            .then( (response)=> {console.log(response);})
+        }
 }
 }
 </script>

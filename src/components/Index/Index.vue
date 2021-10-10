@@ -6,19 +6,18 @@
         <img
           src="~@/assets/kylogo2.png"
           @click="click_logo2"
-          height="90"
+          width="40%"
+          height="50%"
           style="vertical-align: text-bottom"
-        />
-        
-      </div>
-      <div>
+        /> 
+        <div class="text">
         <a @click="click_test">test</a>
-        <a @click="click_doc">开发文档</a>
         <a @click="click_index">首页</a>
         <a @click="click_help">支持与帮助 </a>
         <a @click="click_console">控制台</a>
-        
+        </div> 
       </div>
+      
     </el-header>
     <el-main>
       <!-- 路由占位符 -->
@@ -93,7 +92,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding-top: 10px;
-  height: 100px;
+  height: 10%;
   font-size: 15px;
   vertical-align: middle;
   > div {
@@ -103,6 +102,10 @@ export default {
       margin-left: 10px;
     }
   }
+}
+.text {
+  position: absolute;
+  right: 20px;
 }
 // .title {
 //   padding-top: 20px;
@@ -166,8 +169,9 @@ export default {
   color: #9c9c9c;
   display: block;
 }
-a{
+a {
   margin-left: 25px;
+  width: 150;
 }
 a:hover {
   font-weight: bold;

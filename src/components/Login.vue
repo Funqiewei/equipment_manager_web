@@ -36,9 +36,7 @@
           ⭐科创小项目Test
         </span>
     </div> 
-      
-    
-      <p id="hitokoto" class="encourage">{{ hitokotoText}}</p> 
+      <a id="hitokoto" class="encourage">{{ hitokotoText}}</a> 
     </div> 
     
 
@@ -95,7 +93,7 @@ export default {
         this.$http.post('/api/user/login', qs.stringify(this.loginForm))
         .then( (response)=> {
           console.log(response);
-          this.$router.push("/home")
+          // this.$router.push("/home")
           // let allCookies = document.cookie
           //  console.log(allCookies);
           

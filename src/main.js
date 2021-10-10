@@ -9,6 +9,7 @@ import './assets/fonts/iconfont.css'
 // 导入样式表
 import './assets/css/global.css'
 import axios from 'axios'
+
 //配置请求根路径
 // axios.defaults.baseURL = 'http://47.96.116.218:8889/api/private/v1/'
 axios.defaults.withCredentials=true;
