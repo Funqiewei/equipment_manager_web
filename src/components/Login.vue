@@ -93,7 +93,7 @@ export default {
         this.$http.post('/api/user/login', qs.stringify(this.loginForm))
         .then( (response)=> {
           console.log(response);
-          // this.$router.push("/home")
+          this.$router.push("/home")
           // let allCookies = document.cookie
           //  console.log(allCookies);
           
@@ -110,7 +110,7 @@ export default {
           //   });
         })
         .catch(function (error) {console.log(error)});
-         
+          this.$router.push("/home")
         // {headers:{'Content-Type':'application/x-www-form-urlencoded'}}
         // this.$refs.loginFormRef.validate(async (valid) => {
         //   if (!valid) return;
