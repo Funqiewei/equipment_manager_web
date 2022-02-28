@@ -9,31 +9,54 @@
     <div class="help_body">
       <div class="help_title">科艺控制台网站使用帮助</div>
       <div class="help_main">
-        <h3>如何使用</h3>
-        <p>巴拉巴拉</p>
-        <h3>为什么巴拉巴拉？</h3>
+        <a  @click="gotoDocu" style="font-size:28px;font-weight:bold;"
+          >访问接口文档链接：http://ztuser.ltd/equipment_server/doc/3.html</a
+        >
+
+        <h2>如何使用</h2>
+        <h4>1.预约管理</h4>
         <p>
-          我们鼓励你反馈任何问题或者建议，正是这些反馈推动我们不断进步。任何问题，请与我们联系。
+          操作流程：登录web控制台 -【开始预约】-【选择时间】-进行使用；
+          通过该功能模块，可以直观看出预约情况而且支持手动取消预约。
+          <img src="~@/assets/HelpImg1.png" width="1080px" alt="新增预约" />
         </p>
-        <h3>更多帮助</h3>
+        <h4>2.新建预约</h4>
+        <p>点击新增预约，可以选择时间、机型，并且系统到时会自动打开设备。</p>
+        <img src="~@/assets/HelpImg2.png" width="1080px" alt="手动取消" />
+        <h4>
+          我们鼓励你反馈任何问题或者建议，正是这些反馈推动我们不断进步。任何问题，请与我们联系。
+        </h4>
+        <h4>3.更多帮助：</h4>
         <div>
           <div class="show">
             <li>陈豪佐：硬件</li>
-            <img src="~@/assets/github.png" alt="github" width="50" height="50" />
-            <img src="~@/assets/csdn.png" alt="csdn" width="50" height="50" />
-            <img src="~@/assets/gitee.png" alt="gitee" width="50" height="50" />
+            <img
+              src="~@/assets/github.png"
+              onclick="javascript:location.href='https://github.com/Zuoges'"
+              alt="github"
+              width="50"
+              height="50"
+            />
           </div>
           <div class="show">
             <li>邱仕洪：后端</li>
-           <img src="~@/assets/github.png" alt="github" width="50" height="50" />
-            <img src="~@/assets/csdn.png" alt="csdn" width="50" height="50" />
-            <img src="~@/assets/gitee.png" alt="gitee" width="50" height="50" />
+            <img
+              src="~@/assets/github.png"
+              onclick="javascript:location.href='https://github.com/823984418'"
+              alt="github"
+              width="50"
+              height="50"
+            />
           </div>
           <div class="show">
             <li>方超伟：前端</li>
-            <img src="~@/assets/github.png" alt="github" width="50" height="50" />
-            <img src="~@/assets/csdn.png" alt="csdn" width="50" height="50" />
-            <img src="~@/assets/gitee.png" alt="gitee" width="50" height="50" />
+            <img
+              src="~@/assets/github.png"
+              onclick="javascript:location.href='https://github.com/Funqiewei'"
+              alt="github"
+              width="50"
+              height="50"
+            />
           </div>
         </div>
       </div>
@@ -48,6 +71,9 @@ export default {
   methods: {
     pic_click() {
       this.$router.push("/Index");
+    },
+    gotoDocu() {
+      window.location.href = "http://ztuser.ltd/equipment_server/doc/3.html";
     },
   },
 };
@@ -150,5 +176,10 @@ export default {
   margin: 20px 0 10px 0;
   padding-left: 20px;
   padding-right: 20px;
+}
+
+a:hover {
+  font-weight: bold;
+  border-bottom: 2px solid;
 }
 </style>

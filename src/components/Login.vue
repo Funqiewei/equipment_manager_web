@@ -3,8 +3,7 @@
     
     <canvas id="startrack">
     </canvas>
-
-    <p class="out" @click="out">🏃‍♀️退出</p>
+    <p class="out" @click="out">🏃退出</p>
     <div class="login_box">
       <!-- 头像区域 -->
       <div class="avatar_box">
@@ -75,12 +74,12 @@ export default {
         
     },
     out(){
-      this.$http.post('/api/user/exitLogin')
-        .then(function (response) {
-          console.log(response);
-          let allCookies = document.cookie
-          console.log(allCookies)
-        })
+      // this.$http.post('/api/user/exitLogin')
+      //   .then(function (response) {
+      //     console.log(response);
+      //     let allCookies = document.cookie
+      //     console.log(allCookies)
+      //   })
        this.$router.push("/index");
 
     },
@@ -90,9 +89,9 @@ export default {
       this.$refs.loginFormRef.resetFields();
     },
     login() {
-        this.$http.post('/api/user/login', qs.stringify(this.loginForm))
-        .then( (response)=> {
-          console.log(response);
+        // this.$http.post('/api/userLogin', qs.stringify(this.loginForm))
+        // .then( (response)=> {
+        //   console.log(response);
           this.$router.push("/home")
           // let allCookies = document.cookie
           //  console.log(allCookies);
@@ -108,9 +107,10 @@ export default {
                  
               
           //   });
-        })
-        .catch(function (error) {console.log(error)});
-          this.$router.push("/home")
+         
+         //)
+        // .catch(function (error) {console.log(error)});
+        //   this.$router.push("/home")
         // {headers:{'Content-Type':'application/x-www-form-urlencoded'}}
         // this.$refs.loginFormRef.validate(async (valid) => {
         //   if (!valid) return;
@@ -122,6 +122,7 @@ export default {
         fetch("https://v1.hitokoto.cn/?c=k")
         .then((response) => response.json())
         .then((data) => {
+          console.log(data);
           this.hitokotoText = data.hitokoto;
         })
         .catch(console.error);

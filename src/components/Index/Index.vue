@@ -11,7 +11,7 @@
           style="vertical-align: text-bottom"
         /> 
         <div class="text">
-        <a @click="click_test">test</a>
+        <!-- <a @click="click_test">test</a> -->
         <a @click="click_index">首页</a>
         <a @click="click_help">支持与帮助 </a>
         <a @click="click_console">控制台</a>

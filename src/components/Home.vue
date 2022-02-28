@@ -15,7 +15,6 @@
         :collapse="isCollapse"
         :collapse-transition="false"
         router
-       
       >
         <el-menu-item index="welcome">
           <i class="el-icon-menu"></i>
@@ -32,11 +31,11 @@
 
         <el-menu-item index="roles">
           <i class="el-icon-s-operation"></i>
-          <span slot="title">权限列表</span>
+          <span slot="title">设备总览 </span>
         </el-menu-item>
-        <el-menu-item index="log">
+        <el-menu-item>
           <i class="el-icon-loading"></i>
-          <span slot="title">操作日志</span>
+          <span slot="title">loading</span>
         </el-menu-item>
         <!--  
         <!-- 一级菜单   
@@ -82,6 +81,7 @@
           <span> 预约控制台 </span>
         </div>
         <div>
+          <el-button icon="el-icon-search" @click="doc">接口文档</el-button>
           <el-button icon="el-icon-collection" @click="help">支持</el-button>
           <el-button icon="el-icon-switch-button" @click="logout"
             >退出</el-button
@@ -94,8 +94,29 @@
         <router-view> </router-view>
       </el-main>
       <!-- 底部 -->
-      <el-footer><img src="../assets/footer.jpeg" alt=""  height="160px" width="820px" v-show="random==1">
-      <img src="../assets/footer2.jpg" alt="" height="160px" width="820px" v-show="random==2"></el-footer>
+      <el-footer>
+        <img
+          src="../assets/footer.jpeg"
+          alt=""
+          height="160px"
+          width="1000px"
+          v-show="random == 1"
+        />
+        <img
+          src="../assets/footer2.jpg"
+          alt=""
+          height="160px"
+          width="1000px"
+          v-show="random == 2"
+        />
+        <img
+          src="../assets/footer3.jpeg"
+          alt=""
+          height="160px"
+          width="1000px"
+          v-show="random == 3"
+        />
+      </el-footer>
     </el-container>
   </el-container>
 </template>
@@ -112,19 +133,22 @@ export default {
         102: "iconfont icon-danju",
         145: "iconfont icon-baobiao",
       },
-      isCollapse: false,
+      isCollapse: true,
       activePath: "",
-      random:1,
-      temp:0,
+      random: 1,
+      temp: 0,
     };
   },
- 
+
   created() {
     this.getMenuList();
     this.activePath = window.sessionStorage.getItem("activePath");
-    this.random=Math.round(Math.random()*1)+1 ;
+    this.random = Math.round(Math.random() * 2) + 1;
   },
   methods: {
+    doc() {
+      window.location.href = "http://ztuser.ltd/equipment_server/doc/3.html";
+    },
     help() {
       this.$router.push("/help");
     },
@@ -145,7 +169,6 @@ export default {
     toggleCollapse() {
       this.isCollapse = !this.isCollapse;
     },
-
   },
 };
 </script>
@@ -176,8 +199,8 @@ export default {
   background-color: #ffffff;
   margin-left: 0.5px;
   height: 160px !important;
-  >img{
-    margin-left: 150px;
+  > img {
+    margin-left: 200px;
   }
 }
 .el-main {
@@ -185,7 +208,7 @@ export default {
 }
 .el-aside {
   background-color: #1d1d1e;
- .el-menu {
+  .el-menu {
     border-right: 0px;
   }
   transition: 0.5s;
