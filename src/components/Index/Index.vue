@@ -3,6 +3,9 @@
     <el-header>
       <div>
         <!-- 用~@图不会裂好奇怪 -->
+        <!-- 怎么解决vue动态设置img的src不生效的问题 -->
+        <!-- 或者因为动态添加src被当做静态资源处理了，没有进行编译，所以要加上require。
+<img class="logo" :src="require("./../assets/images/logo.png")" alt="公司logo"> -->
         <img
           src="~@/assets/kylogo2.png"
           @click="click_logo2"

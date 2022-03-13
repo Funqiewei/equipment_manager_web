@@ -229,7 +229,7 @@ export default {
             }, 500);
           } else if (data.code == 4) {
             this.$message.error("不要重复预约");
-          }else{
+          } else {
             this.$message.error("预约失败");
             console.log(data);
           }
